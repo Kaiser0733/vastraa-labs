@@ -6,8 +6,11 @@ import react from '@vitejs/plugin-react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const SITE_URL = process.env.SITE_URL ?? 'https://kaiser0733.github.io/vastraa-labs';
-const OG_IMAGE = `${SITE_URL.replace(/\/$/, '')}/og.png`;
+// `??` only falls back on null/undefined. GitHub Actions exports SITE_URL as an
+// empty string when vars.SITE_URL is unset, which is a *defined* value — so the
+// default was skipped and the build shipped empty canonical and og:url tags.
+const SITE_URL = (process.env.SITE_URL || 'https://kaiser0733.github.io/vastraa-labs').replace(/\/$/, '');
+const OG_IMAGE = `${SITE_URL}/og.png`;
 
 /**
  * Substitutes the two deployment-dependent absolute URLs at build time, so
