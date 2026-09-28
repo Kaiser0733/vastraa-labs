@@ -16,7 +16,8 @@
     "shots": "node scripts/shots.mjs",
     "sync": "node scripts/sync-mirror.mjs",
     "slop": "node scripts/slop-audit.mjs",
-    "tokens": "node scripts/token-check.mjs src/styles"
+    "tokens": "node scripts/token-check.mjs src/styles",
+    "live": "node scripts/live-check.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
