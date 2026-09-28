@@ -6,10 +6,12 @@ import react from '@vitejs/plugin-react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// `??` only falls back on null/undefined. GitHub Actions exports SITE_URL as an
-// empty string when vars.SITE_URL is unset, which is a *defined* value — so the
-// default was skipped and the build shipped empty canonical and og:url tags.
-const SITE_URL = (process.env.SITE_URL || 'https://kaiser0733.github.io/vastraa-labs').replace(/\/$/, '');
+// `||` not `??`: CI exports an unset variable as an empty string, which is a
+// defined value, so `??` would skip this default and ship empty og tags.
+// This default is deliberately a placeholder — pages-check.mjs FAILS the build
+// on any `.example` domain, so nothing ships with a fake canonical. Set
+// SITE_URL in the environment (or edit this line) when you actually deploy.
+const SITE_URL = (process.env.SITE_URL || 'https://vastraa-labs.example').replace(/\/$/, '');
 const OG_IMAGE = `${SITE_URL}/og.png`;
 
 /**

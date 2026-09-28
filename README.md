@@ -32,19 +32,23 @@ node scripts/audit.mjs http://127.0.0.1:4173/
 
 ## Deployment
 
-Push to `main`. `.github/workflows/deploy.yml` builds and publishes to GitHub
-Pages; enable it once under **Settings → Pages → Source → GitHub Actions**.
+Not deployed anywhere yet. `dist/` is a plain static directory — serve it from
+whatever host you choose and it works unchanged.
 
-Set the repository variable `SITE_URL` to the live origin (for example
-`https://<user>.github.io/vastraa-labs`). It feeds `<link rel=canonical>`,
-`og:url` and the generated `sitemap.xml`. Without it the build falls back to the
-visible placeholder `https://vastraa-labs.example`, which is deliberate — a wrong
-canonical is worse than an obviously unset one.
+Set `SITE_URL` to the live origin before you deploy. It feeds
+`<link rel=canonical>`, `og:url` and the generated `sitemap.xml`. Without it the
+build falls back to the visible placeholder `https://vastraa-labs.example`,
+which is deliberate — `pages-check.mjs` fails the build on any `.example`
+domain, so nothing ships with a fake canonical.
+
+```bash
+SITE_URL=https://your-host npm run build
+node scripts/live-check.mjs https://your-host/   # verify the deployed bytes
+```
 
 Vite is configured with `base: './'`, so the same `dist/` works from a project
-subpath, a custom domain root, or a local file. Adding a client-side router later
-requires switching that to an absolute path; nothing else changes. Moving to a
-custom domain is a `SITE_URL` change plus a CNAME record.
+subpath, a domain root, or a local file. Adding a client-side router later
+requires switching that to an absolute path; nothing else changes.
 
 ## Where things live
 

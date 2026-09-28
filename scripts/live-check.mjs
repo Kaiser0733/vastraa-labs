@@ -1,7 +1,14 @@
-// Verifies the deployed site, not the build. A green CI run proves the pipeline
-// exited 0; it does not prove Pages is serving the bytes, and a broken canonical
+// Verifies a DEPLOYED site, not the build. A green build proves the pipeline
+// exited 0; it does not prove anything is being served, and a broken canonical
 // is invisible in a build log.
-const ORIGIN = (process.argv[2] || 'https://kaiser0733.github.io/vastraa-labs').replace(/\/$/, '');
+//
+// There is no default origin — the site is not deployed anywhere yet. Pass the
+// real URL when you deploy:  node scripts/live-check.mjs https://your-host/
+const ORIGIN = (process.argv[2] || '').replace(/\/$/, '');
+if (!ORIGIN) {
+  console.log('no origin given — nothing is deployed yet. Pass a URL to verify.');
+  process.exit(0);
+}
 
 let fails = 0;
 const v = (ok, label, detail) => {
