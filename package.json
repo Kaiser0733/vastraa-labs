@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Vastraa Labs — independent software studio. Currently building Rivet.",
+  "description": "Vastraa Labs \u2014 independent software studio. Currently building Rivet.",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,10 @@
     "og": "node scripts/og.mjs",
     "audit": "node scripts/audit.mjs",
     "pages": "node scripts/pages-check.mjs",
-    "shots": "node scripts/shots.mjs"
+    "shots": "node scripts/shots.mjs",
+    "sync": "node scripts/sync-mirror.mjs",
+    "slop": "node scripts/slop-audit.mjs",
+    "tokens": "node scripts/token-check.mjs src/styles"
   },
   "dependencies": {
     "react": "^18.3.1",

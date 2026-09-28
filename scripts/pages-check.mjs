@@ -99,6 +99,13 @@ try {
     'no placeholder domain in canonical/og/twitter tags',
     placeheld.join(', ') || `canonical=${r.canonical || '(none)'}`,
   );
+  // An og:image tag pointing at a file that was never deployed renders a blank
+  // card, and nothing in the build or the a11y audit notices. This runs in Node,
+  // so resolve the path against the local check server rather than the page.
+  const ogRel = r.ogImage ? r.ogImage.replace(/^https?:\/\/[^/]+/, '').replace(/^\/vastraa-labs\//, '/') : '';
+  const ogRes = await fetch(`http://127.0.0.1:${PORT}/vastraa-labs${ogRel}`);
+  check(ogRes.ok, 'og:image is actually deployed', `${ogRel || '(none)'} -> ${ogRes.status}`);
+
   check(
     r.canonical.startsWith('https://'),
     'canonical is an absolute https URL',

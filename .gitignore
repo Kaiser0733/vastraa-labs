@@ -13,6 +13,3 @@ shots
 # the real build runs in $HOME because /storage is FUSE and native .node
 # binaries cannot load there; this mirror must never be committed
 vlab-build/
-
-# og.png is generated from the built CSS — regenerate it, do not hand-edit
-public/og.png

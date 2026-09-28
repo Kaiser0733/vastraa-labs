@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const SITE_URL = process.env.SITE_URL ?? 'https://vastraa-labs.example';
+const SITE_URL = process.env.SITE_URL ?? 'https://kaiser0733.github.io/vastraa-labs';
 const OG_IMAGE = `${SITE_URL.replace(/\/$/, '')}/og.png`;
 
 /**
