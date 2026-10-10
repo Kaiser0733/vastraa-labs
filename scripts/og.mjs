@@ -51,11 +51,11 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>${css}
     <h1 class="og-title">Vastraa Labs</h1>
   </div>
   <div class="og-hair"><span class="og-datum"></span></div>
-  <p class="og-stand">Our first product is Rivet — a coding agent that works on a real project, from your phone.</p>
+  <p class="og-stand">Rivet is out now — a coding agent that works on a real project, from your phone.</p>
   <ul class="og-facts">
     <li><span class="og-mono">Studio</span><b>Two people</b></li>
     <li><span class="og-mono">Builds</span><b>AI and automation</b></li>
-    <li><span class="og-mono">Shipping</span><b>Nothing released yet</b></li>
+    <li><span class="og-mono">Now shipping</span><b>Rivet v0.11.0</b></li>
   </ul>
 </div></body></html>`;
 

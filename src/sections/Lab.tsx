@@ -1,5 +1,6 @@
 import { Icon } from '../components/Icon';
 import { isSet, links } from '../data/site';
+import { status } from '../data/rivet';
 
 export function Lab() {
   return (
@@ -9,7 +10,7 @@ export function Lab() {
           <h2 className="sec__title sec__title--sm" id="lab-title">
             Lab
           </h2>
-          <p className="sec__line">Experiments. One of them is becoming a product.</p>
+          <p className="sec__line">Experiments. One of them shipped.</p>
         </div>
 
         <ul className="lab">
@@ -24,9 +25,9 @@ export function Lab() {
                 <Icon name="phone" size={18} />
               </span>
               <span className="lab__name">Rivet</span>
-              <span className="lab__state" data-state="building">
+              <span className="lab__state" data-state="released">
                 <span className="dot" aria-hidden="true" />
-                In development
+                {status.label}
               </span>
               <Icon name="arrow" size={16} className="lab__go" />
             </a>
@@ -36,7 +37,7 @@ export function Lab() {
             <span className="lab__icon">
               <Icon name="flask" size={18} />
             </span>
-            <span className="lab__name">Nothing published yet</span>
+            <span className="lab__name">Nothing else yet</span>
             <span className="lab__state" data-state="empty">
               —
             </span>

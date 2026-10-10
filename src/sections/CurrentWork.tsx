@@ -46,6 +46,17 @@ export function CurrentWork() {
                 <span className="dot" aria-hidden="true" />
                 {status.label}
               </p>
+              {isSet(links.release) && (
+                <a
+                  className="btn btn--quiet"
+                  href={links.release.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Icon name="package" size={16} />
+                  {status.cta}
+                </a>
+              )}
               {isSet(links.rivet) && (
                 <a
                   className="btn btn--quiet"
@@ -54,7 +65,7 @@ export function CurrentWork() {
                   rel="noreferrer noopener"
                 >
                   <Icon name="github" size={16} />
-                  {status.cta}
+                  Source
                 </a>
               )}
             </div>

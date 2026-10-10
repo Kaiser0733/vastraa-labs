@@ -831,8 +831,8 @@
   white-space: nowrap;
 }
 
-.lab__state[data-state='building'] {
-  color: var(--ink-2);
+.lab__state[data-state='released'] {
+  color: var(--live);
 }
 
 .about {

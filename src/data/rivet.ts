@@ -43,6 +43,6 @@ export const loop = [
 ] as const;
 
 export const status = {
-  label: 'In development',
-  cta: 'Follow the build',
+  label: 'v0.11.0 — out now',
+  cta: 'Get Rivet',
 } as const;

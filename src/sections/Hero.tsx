@@ -5,7 +5,7 @@ import { isSet, links, studio } from '../data/site';
 const FACTS = [
   { icon: 'signal' as const, k: 'Studio', v: 'Two people' },
   { icon: 'package' as const, k: 'Builds', v: 'AI and automation' },
-  { icon: 'flask' as const, k: 'Shipping', v: 'Nothing released yet' },
+  { icon: 'phone' as const, k: 'Shipping', v: 'Rivet v0.11.0' },
 ];
 
 export function Hero() {
