@@ -15,7 +15,7 @@ export const studio = {
 } as const;
 
 export const site = {
-  url: 'https://vastraa-labs.example',
+  url: 'https://vastraalabs.online',
   ogImage: '/og.png',
 } as const;
 
