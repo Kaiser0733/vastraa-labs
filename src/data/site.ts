@@ -22,7 +22,7 @@ export const site = {
 export const links = {
   github: { label: 'GitHub', href: 'https://github.com/Kaiser0733' } as ExternalLink,
   x: { label: 'X', href: 'https://x.com/Amardeep3307' } as ExternalLink,
-  contact: { label: 'Email', href: 'mailto:vastraalabs.dev@gmail.com' } as ExternalLink,
+  contact: { label: 'Email', href: 'mailto:contact@vastraalabs.online' } as ExternalLink,
   rivet: { label: 'Rivet', href: 'https://github.com/Kaiser0733/rivet' } as ExternalLink,
   // The APK is published on this release page, so the download CTA goes here
   // rather than at the repository root.
