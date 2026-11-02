@@ -166,6 +166,21 @@ hero alt text, every meta description not listed above.
   scroll remains. `npm run build` clean; fix-round receipts re-checked
   (Bihar/Amardeep/ClientRouter 0, APK hashes unchanged).
 
+### Freeline room visual (owner tablet review)
+- Asset: Hermes' real capture of freeline.vastraalabs.online
+  (1200×770 PNG), copied to `src/assets/shots/freeline-board.png` and
+  served through the Astro image pipeline like Rivet's screenshots
+  (widths 400/800/1200). Dist weights: 37 KB / 21 KB / 6.7 KB WebP.
+- On /work/: the old text link panel is replaced. The screenshot sits
+  in the same `.frame` treatment and column as Rivet's, and the whole
+  framed image links to https://freeline.vastraalabs.online/ in a new
+  tab. Alt: "The Freeline board: free AI models, checked live, with
+  the count of models free right now."
+- No caption: Rivet's frame carries none, so Freeline gets none.
+  Room text and the "Open Freeline" button unchanged. The dead
+  `.link-panel` CSS went with the panel. Nothing else changed.
+- `npm run build` clean. APK hashes unchanged. Uncommitted.
+
 ### Follow-up — people section (owner-supplied facts)
 - Co-founder row: name set to "Rehan", role stays "Co-founder". His
   only link is Instagram: https://www.instagram.com/1.amrehan.

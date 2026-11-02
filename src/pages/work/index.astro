@@ -5,6 +5,7 @@ import CopyButton from '../../components/CopyButton.astro';
 import Icon from '../../components/Icon.astro';
 import Terminal from '../../components/Terminal.astro';
 import chat from '../../assets/shots/rivet-chat.jpg';
+import freelineBoard from '../../assets/shots/freeline-board.png';
 import { links } from '../../data/links';
 
 // Real output, captured 2026-11-02 from governer 1.0.2 (pip install
@@ -45,11 +46,9 @@ const governerLines = [
       <p>Which AI models are free right now. Checked every 3 hours.</p>
       <a class="btn btn-ghost" href={links.freeline}>Open Freeline <Icon name="arrow-up-right" size={16} /></a>
     </div>
-    <div class="room-visual" style="align-self:start">
-      <a class="link-panel" href={links.freeline}>
-        <span class="mono-label">FREELINE.VASTRAALABS.ONLINE</span>
-        <span style="font-size:1.25rem;font-weight:500;color:var(--porcelain)">Which AI models are free right now.</span>
-        <span class="text-link" style="display:inline-flex;gap:8px;align-items:center">Open <Icon name="arrow-up-right" size={16} /></span>
+    <div class="room-visual frame">
+      <a href={links.freeline} target="_blank" rel="noreferrer" aria-label="Open Freeline">
+        <Image src={freelineBoard} alt="The Freeline board: free AI models, checked live, with the count of models free right now." width={1200} height={770} widths={[400, 800, 1200]} sizes="(max-width: 767px) 100vw, 560px" formats={['avif', 'webp']} />
       </a>
     </div>
   </div>
