@@ -152,6 +152,20 @@ hero alt text, every meta description not listed above.
 - `npm run build` clean. New tooling: `scripts/cutout.py`, project
   `.venv` (rembg, gitignored). Nothing committed or pushed.
 
+### Loop-back — Governer terminal clipped line (live-browser find)
+- Change (`src/styles/global.css`, terminal only; output text untouched):
+  lines now `white-space: pre-wrap` with `overflow-wrap: break-word`,
+  panel `overflow-x: hidden`, font 0.78rem, stepping to 0.72rem with
+  20px padding under 768px. The two-line backslash command is as-is.
+- Proof: widest line is the wallet status line at 65 characters. At a
+  390px phone width the panel leaves 310px of text room; at 0.72rem
+  IBM Plex Mono a character is 6.91px, so 44 characters fit — the
+  wallet line breaks at a space before "200,000", its segments run
+  33 + 32 characters, and no word in the output is longer than 15
+  characters, so nothing breaks mid-word or mid-flag and no sideways
+  scroll remains. `npm run build` clean; fix-round receipts re-checked
+  (Bihar/Amardeep/ClientRouter 0, APK hashes unchanged).
+
 ### Follow-up — people section (owner-supplied facts)
 - Co-founder row: name set to "Rehan", role stays "Co-founder". His
   only link is Instagram: https://www.instagram.com/1.amrehan.

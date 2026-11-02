@@ -208,8 +208,11 @@ html.js [data-reveal].in { opacity: 1; transform: translateY(0); }
   border: 1px solid var(--rule-strong); padding: 32px; display: flex;
   flex-direction: column; gap: 16px; align-items: flex-start; justify-content: center;
 }
-.terminal { background: var(--carbon-1); padding: 24px; font-family: var(--font-facts); font-size: 0.84375rem; line-height: 1.7; color: var(--ash); overflow-x: auto; border-radius: 2px; }
-.terminal div { white-space: pre; }
+.terminal { background: var(--carbon-1); padding: 24px; font-family: var(--font-facts); font-size: 0.78rem; line-height: 1.7; color: var(--ash); overflow-x: hidden; border-radius: 2px; }
+.terminal div { white-space: pre-wrap; overflow-wrap: break-word; }
+@media (max-width: 767px) {
+  .terminal { padding: 20px; font-size: 0.72rem; }
+}
 .terminal .t-cmd { color: var(--porcelain); }
 .blocked-tag { background: var(--crimson); color: var(--porcelain); padding: 1px 6px; border-radius: 2px; font-size: 0.75rem; }
 
