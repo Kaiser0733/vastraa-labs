@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props { title: string; description: string; ogImage?: string }
+const { title, description, ogImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} ogImage={ogImage}>
+      <slot name="head" slot="head" />
+    </BaseHead>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <Header />
+      <main id="main"><slot /></main>
+      <Footer />
+    </div>
+    <script>
+      document.documentElement.classList.add('js');
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      function navIndicator() {
+        const ind = document.getElementById('nav-indicator');
+        if (!ind) return;
+        const path = location.pathname;
+        let active: HTMLElement | null = null;
+        document.querySelectorAll<HTMLElement>('[data-nav-link]').forEach((a) => {
+          const href = a.getAttribute('href')!;
+          const on = href !== '/' && path.startsWith(href);
+          if (on) { a.setAttribute('aria-current', 'page'); active = a; }
+          else a.removeAttribute('aria-current');
+        });
+        if (active) {
+          ind.style.left = `${(active as HTMLElement).offsetLeft}px`;
+          ind.style.width = `${(active as HTMLElement).offsetWidth}px`;
+          ind.style.opacity = '1';
+        } else ind.style.opacity = '0';
+      }
+
+      function reveals() {
+        const els = document.querySelectorAll('[data-reveal]:not(.in), [data-line]:not(.in)');
+        if (!('IntersectionObserver' in window) || reduced) {
+          els.forEach((e) => e.classList.add('in'));
+          return;
+        }
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        els.forEach((e) => io.observe(e));
+      }
+
+      function parallax() {
+        if (reduced || !finePointer) return;
+        document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((win) => {
+          if (win.dataset.bound) return;
+          win.dataset.bound = '1';
+          const img = win.querySelector('img');
+          if (!img) return;
+          let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+          const loop = () => {
+            cx += (tx - cx) * 0.08;
+            cy += (ty - cy) * 0.08;
+            img.style.transform = `translate(${cx}px, ${cy}px) scale(1.02)`;
+            if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) raf = requestAnimationFrame(loop);
+            else raf = 0;
+          };
+          const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+          win.addEventListener('mousemove', (e) => {
+            const r = win.getBoundingClientRect();
+            tx = -((e.clientX - r.left) / r.width - 0.5) * 12;
+            ty = -((e.clientY - r.top) / r.height - 0.5) * 12;
+            kick();
+          });
+          win.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
+        });
+      }
+
+      function homeBits() {
+        const back = document.getElementById('back-again');
+        if (back) {
+          const returning = localStorage.getItem('vl-visited');
+          if (returning && !sessionStorage.getItem('vl-back-shown')) {
+            sessionStorage.setItem('vl-back-shown', '1');
+            setTimeout(() => back.classList.add('show'), 1200);
+          }
+          localStorage.setItem('vl-visited', '1');
+          if (!sessionStorage.getItem('vl-lit')) {
+            sessionStorage.setItem('vl-lit', '1');
+            document.documentElement.classList.add('lights-play');
+            setTimeout(() => document.documentElement.classList.remove('lights-play'), 1500);
+          }
+        }
+      }
+
+      function init() { navIndicator(); reveals(); parallax(); homeBits(); }
+      document.addEventListener('astro:page-load', init);
+      addEventListener('resize', navIndicator);
+
+      document.addEventListener('click', async (e) => {
+        const t = e.target as HTMLElement;
+        if (t.closest('[data-menu-open]')) document.getElementById('mobile-sheet')?.removeAttribute('hidden');
+        if (t.closest('[data-menu-close]') || t.closest('.mobile-sheet nav a'))
+          document.getElementById('mobile-sheet')?.setAttribute('hidden', '');
+        const btn = t.closest<HTMLElement>('[data-copy]');
+        if (btn) {
+          const text = btn.dataset.copy!;
+          try { await navigator.clipboard.writeText(text); }
+          catch {
+            const ta = document.createElement('textarea');
+            ta.value = text; document.body.appendChild(ta); ta.select();
+            document.execCommand('copy'); ta.remove();
+          }
+          btn.classList.add('copied');
+          const label = btn.querySelector('[data-copy-label]');
+          const old = label?.textContent;
+          if (label) label.textContent = 'Copied';
+          setTimeout(() => { btn.classList.remove('copied'); if (label && old) label.textContent = old; }, 1600);
+        }
+      });
+    </script>
+  </body>
+</html>

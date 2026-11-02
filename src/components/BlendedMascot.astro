@@ -1,0 +1,8 @@
+---
+import { Picture } from 'astro:assets';
+import full from '../assets/mascot/full.png';
+---
+
+<div class="blended" aria-hidden="true">
+  <Picture src={full} alt="" width={960} height={960} widths={[480, 960]} sizes="480px" formats={['avif', 'webp']} loading="lazy" />
+</div>

@@ -1,48 +1,21 @@
-export type Step = {
-  readonly t: string;
-  readonly who: 'you' | 'rivet';
-  readonly lines: readonly string[];
-  readonly wait?: boolean;
-};
+import { links } from './links';
 
-export const ledger: readonly Step[] = [
-  { t: 'T+00:00', who: 'you', lines: ['Fix the crash on launch.'] },
-  { t: 'T+00:11', who: 'rivet', lines: ['Reading six modules. One entry point.'] },
-  { t: 'T+00:19', who: 'rivet', lines: ['Found it — a binding read before init.'] },
-  {
-    t: 'T+00:21',
-    who: 'rivet',
-    lines: ['This touches three files. One is generated. Approve?'],
-    wait: true,
-  },
-  { t: 'T+00:24', who: 'rivet', lines: ['Applied. Nothing else moved.'] },
-  { t: 'T+00:26', who: 'rivet', lines: ['Three files changed. Undo any of it.'] },
-];
-
-export const gate = {
-  title: 'Needs your call',
-  sub: 'Nothing is written until you say so.',
-  approve: 'Approve',
-  decline: 'Not now',
-  declined: 'No files changed. Nothing to review.',
+export const rivet = {
+  version: 'v1.1.1',
+  released: '2026.11.02',
+  needs: 'Android 8.0+',
+  license: 'Apache-2.0',
+  apkFile: 'Rivet-v1.1.1.apk',
+  githubAssetUrl: links.rivetGithubApk,
+  mirrorUrl: '/downloads/Rivet-v1.1.1.apk',
+  signingKey:
+    '5A:94:51:92:C0:86:E9:41:2E:36:D3:AF:3F:5C:27:01:98:D5:81:98:2B:0A:7B:6E:9B:67:CF:F3:BC:7F:A8:0B',
+  signingKeyShort: '5A:94:51:92…7F:A8:0B',
 } as const;
 
-export const changed = [
-  { path: '…/App.kt', added: 2, removed: 0, note: 'the fix' },
-  { path: '…/Graph.kt', added: 8, removed: 3, note: 'guard the read' },
-  { path: '…/Binding.kt', added: 2, removed: 0, note: 'generated' },
+// Files the mirror carries, newest first. Dates checked against the
+// GitHub releases on 2026-11-02.
+export const mirrorFiles = [
+  { version: 'v1.1.1', file: 'Rivet-v1.1.1.apk', date: '2026.11.02' },
+  { version: 'v1.1.0', file: 'Rivet-v1.1.0.apk', date: '2026.11.02' },
 ] as const;
-
-export const totals = { files: 3, added: 12, removed: 3 } as const;
-
-export const loop = [
-  { step: 'Pick a project', note: 'A folder on your phone. That is the setup.' },
-  { step: 'Say what you need', note: 'Plain words.' },
-  { step: 'Approve the risky bit', note: 'Rivet stops and asks.' },
-  { step: 'Look, or undo', note: 'Every change is reversible.' },
-] as const;
-
-export const status = {
-  label: 'v0.11.0 — out now',
-  cta: 'Get Rivet',
-} as const;

@@ -1,0 +1,40 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import Icon from '../../components/Icon.astro';
+import { links } from '../../data/links';
+import { mirrorFiles } from '../../data/rivet';
+import { apkInfo, listDownloadFiles } from '../../lib/apk';
+
+const rows = listDownloadFiles().map((file) => {
+  const meta = mirrorFiles.find((m) => m.file === file);
+  if (!meta) throw new Error(`Mirror file not listed in rivet.ts: ${file}`);
+  return { ...meta, info: apkInfo(file) };
+});
+---
+
+<SiteLayout title="Downloads — Vastraa Labs" description="The Vastraa Labs mirror. Same files as GitHub.">
+  <section style="padding-top:48px">
+    <h1>Downloads.</h1>
+    <p style="margin-top:20px">The mirror. Same files as GitHub.</p>
+  </section>
+
+  <section>
+    {rows.map((r, i) => (
+      <div class="download-row" style={i > 0 ? 'color:var(--mute)' : undefined}>
+        <span style={`flex:1;font-size:1.25rem;font-weight:500;${i === 0 ? 'color:var(--porcelain)' : ''}`}>Rivet {r.version}</span>
+        <span class="mono">APK</span>
+        <span class="mono">{r.info.sizeMb} MB</span>
+        <span class="mono">{r.date}</span>
+        <CopyButton text={r.info.sha256} label="SHA-256" />
+        <a class="text-link" href={`/downloads/${r.file}`} download style="display:inline-flex;gap:8px;align-items:center">
+          Download <Icon name="arrow-down" size={16} />
+        </a>
+      </div>
+    ))}
+    <p style="margin-top:32px;display:flex;gap:32px">
+      <a class="text-link" href="/work/rivet/">About Rivet →</a>
+      <a class="text-link" href={links.rivetReleases}>GitHub Releases ↗</a>
+    </p>
+  </section>
+</SiteLayout>

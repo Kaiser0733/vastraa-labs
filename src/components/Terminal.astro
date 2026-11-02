@@ -1,0 +1,17 @@
+---
+// Lines are real command output, set as HTML text. A line with
+// `blocked: true` gets its BLOCKED word wrapped in the crimson tag.
+interface Line { text: string; cmd?: boolean; blocked?: boolean }
+interface Props { lines: Line[] }
+const { lines } = Astro.props;
+---
+
+<div class="terminal" role="img" aria-label="Terminal output">
+  {lines.map((l) => (
+    <div class={l.cmd ? 't-cmd' : undefined}>
+      {l.blocked
+        ? <>{l.text.split('BLOCKED')[0]}<span class="blocked-tag">BLOCKED</span>{l.text.split('BLOCKED')[1]}</>
+        : l.text}
+    </div>
+  ))}
+</div>

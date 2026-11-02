@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Window from '../components/Window.astro';
+import eyes from '../assets/mascot/eyes.png';
+---
+
+<SiteLayout title="Wrong room — Vastraa Labs" description="That page is not here.">
+  <section class="notfound">
+    <Window image={eyes} alt="" width={360} height={120} widths={[360, 720]} />
+    <p class="mono-label">404</p>
+    <p style="font-size:1.25rem;font-weight:500;color:var(--porcelain)">Wrong room.</p>
+    <p style="display:flex;gap:32px">
+      <a class="text-link" href="/">Home</a>
+      <a class="text-link" href="/work/">Work</a>
+    </p>
+  </section>
+</SiteLayout>

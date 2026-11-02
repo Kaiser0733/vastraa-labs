@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import Window from './Window.astro';
+import MobileMenu from './MobileMenu.astro';
+import head from '../assets/mascot/head.png';
+import { links } from '../data/links';
+
+const path = Astro.url.pathname;
+const items = [
+  { label: 'Work', href: '/work/', active: path.startsWith('/work') },
+  { label: 'Studio', href: '/studio/', active: path.startsWith('/studio') },
+  { label: 'Contact', href: '/contact/', active: path.startsWith('/contact') },
+];
+---
+
+<header class="site-header" transition:persist>
+  <a class="brand" href="/" aria-label="Vastraa Labs — home">
+    <Window image={head} alt="" width={36} height={36} widths={[36, 72]} />
+    <span>Vastraa Labs</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <span class="nav-links" style="display:contents">
+      {items.map((i) => (
+        <a href={i.href} data-nav-link aria-current={i.active ? 'page' : undefined}>{i.label}</a>
+      ))}
+      <a href={links.github} aria-label="GitHub"><Icon name="github" /></a>
+    </span>
+    <span id="nav-indicator" style="opacity:0"></span>
+    <button type="button" class="menu-button" data-menu-open>Menu</button>
+  </nav>
+</header>
+<MobileMenu />

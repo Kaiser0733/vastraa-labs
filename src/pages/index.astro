@@ -1,0 +1,74 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Window from '../components/Window.astro';
+import RuledRow from '../components/RuledRow.astro';
+import CopyButton from '../components/CopyButton.astro';
+import Icon from '../components/Icon.astro';
+import bust from '../assets/mascot/bust.png';
+import { products } from '../data/products';
+import { links } from '../data/links';
+
+const heroAlt = 'Vastraa Labs mascot: a girl with a black bob and a striped top, grinning.';
+---
+
+<SiteLayout title="Vastraa Labs — An AI studio that ships" description="Vastraa Labs is an AI studio in Bihar, India. Two people. Everything here is live.">
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-h1">An AI studio that ships.</h1>
+      <p class="line">Two people. Everything here is live.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/work/">See the work <Icon name="arrow-right" size={16} /></a>
+        <a class="btn btn-ghost" href={links.github}><Icon name="github" /> GitHub</a>
+      </div>
+    </div>
+    <figure class="hero-window">
+      <Window image={bust} alt={heroAlt} width={464} height={580} widths={[360, 464, 720, 928]} parallax eager inlineSize={false} />
+      <figcaption>
+        <span class="mono-label">BIHAR, INDIA</span>
+        <span class="mono-label" id="back-again">Back again?</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section aria-label="Shipped">
+    <p class="mono-label" data-line>SHIPPED · 03</p>
+    <div class="ruled" style="margin-top:16px">
+      {products.map((p) => (
+        <RuledRow>
+          <span class="mono muted">{p.index}</span>
+          <span class="row-main">
+            <span class="row-name">{p.name}</span><br />
+            <span>{p.line}</span>
+          </span>
+          <span class="mono muted" style="display:inline-flex;gap:8px;align-items:center">
+            {p.tag}
+            {p.id === 'freeline' && <span class="live-dot" aria-hidden="true"></span>}
+          </span>
+          {p.id === 'rivet' && (
+            <span style="display:inline-flex;gap:16px;align-items:center">
+              <a class="text-link" href="/work/rivet/#download">Get Rivet →</a>
+              <a href={p.source} aria-label="Rivet on GitHub"><Icon name="github" /></a>
+            </span>
+          )}
+          {p.id === 'freeline' && (
+            <a class="text-link" href={p.href}>Open ↗</a>
+          )}
+          {p.id === 'governer' && (
+            <span style="display:inline-flex;gap:16px;align-items:center">
+              <span class="mono" style="color:var(--porcelain)">pip install governer</span>
+              <CopyButton text="pip install governer" />
+              <a href={p.source} aria-label="Governer on GitHub"><Icon name="github" /></a>
+            </span>
+          )}
+        </RuledRow>
+      ))}
+    </div>
+  </section>
+
+  <div class="rest" aria-hidden="true"></div>
+
+  <section style="margin-top:0">
+    <p style="font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:600;color:var(--porcelain);letter-spacing:-0.02em;max-width:none">Built in public, with almost no money.</p>
+    <p style="margin-top:24px"><a class="text-link" href="/studio/">The studio →</a></p>
+  </section>
+</SiteLayout>

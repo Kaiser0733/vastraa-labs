@@ -1,0 +1,54 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import RuledRow from '../components/RuledRow.astro';
+import Icon from '../components/Icon.astro';
+import { people } from '../data/studio';
+import { shipLog } from '../data/ship-log';
+
+const how = ['Ship it or don\'t mention it.', 'Spend little. Build carefully.', 'Open by default.'];
+---
+
+<SiteLayout title="Studio — Vastraa Labs" description="Vastraa Labs is an AI studio in Bihar, India. Two people. Real software.">
+  <section style="padding-top:48px">
+    <span class="mono-label">STUDIO</span>
+    <h1 style="margin-top:16px">Two people. Real software.</h1>
+    <p style="margin-top:24px">Vastraa Labs is an AI studio in Bihar, India. We build our own products and ship them in public. No outside money. If it's on this site, you can use it today.</p>
+  </section>
+
+  <section aria-label="How we work">
+    {how.map((line, i) => (
+      <div class="fact-row">
+        <span class="mono muted">0{i + 1}</span>
+        <span style="flex:1;color:var(--porcelain);font-size:1.25rem;font-weight:500">{line}</span>
+      </div>
+    ))}
+  </section>
+
+  <section aria-label="People">
+    <div class="ruled">
+      {people.map((p) => (
+        <RuledRow>
+          <span class="row-main">
+            <span class="row-name">{p.name ?? p.role}</span>
+            {p.handle && <span class="mono muted" style="margin-left:16px">{p.handle}</span>}
+          </span>
+          {p.name && <span>{p.role}</span>}
+          {p.github && <a href={p.github} aria-label={`${p.name} on GitHub`}><Icon name="github" /></a>}
+          {p.x && <a href={p.x} aria-label={`${p.name} on X`}><Icon name="x" /></a>}
+        </RuledRow>
+      ))}
+    </div>
+  </section>
+
+  <section aria-label="Ship ledger">
+    <p class="mono-label" data-line>SHIP LEDGER</p>
+    <div style="margin-top:16px">
+      {shipLog.map((e) => (
+        <div class="ledger-row">
+          <span class="mono muted" style="min-width:96px">{e.date}</span>
+          <span style="color:var(--porcelain)">{e.line}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</SiteLayout>

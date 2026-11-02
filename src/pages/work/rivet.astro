@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import DownloadDoors from '../../components/DownloadDoors.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import Icon from '../../components/Icon.astro';
+import chat from '../../assets/shots/rivet-chat.jpg';
+import home from '../../assets/shots/rivet-home.jpg';
+import { links } from '../../data/links';
+import { rivet } from '../../data/rivet';
+---
+
+<SiteLayout title="Rivet — Vastraa Labs" description="Rivet is a coding agent on your phone. Bring your own model." ogImage="/og/og-rivet.png">
+  <section class="rivet-head">
+    <div class="rivet-head-text">
+      <span class="mono-label">RIVET · ANDROID · OPEN SOURCE</span>
+      <h1 style="margin-top:16px">Rivet.</h1>
+      <p style="margin-top:20px;color:var(--porcelain)">A coding agent on your phone.<br />Bring your own model.</p>
+      <p class="mono muted" style="margin-top:20px">{rivet.version} · {rivet.released}</p>
+    </div>
+    <div class="rivet-shots">
+      <div class="frame"><Image src={chat} alt="Rivet chat screen" width={600} height={960} widths={[300, 600]} sizes="300px" formats={['avif', 'webp']} /></div>
+      <div class="frame"><Image src={home} alt="Rivet home screen" width={600} height={960} widths={[300, 600]} sizes="300px" formats={['avif', 'webp']} /></div>
+    </div>
+  </section>
+
+  <section id="download" class="download-block">
+    <h2>Download.</h2>
+    <DownloadDoors />
+  </section>
+
+  <section class="facts" aria-label="Facts">
+    <div class="fact-row"><span class="mono-label">Version</span><span class="mono" style="color:var(--porcelain)">{rivet.version}</span></div>
+    <div class="fact-row"><span class="mono-label">Released</span><span class="mono" style="color:var(--porcelain)">{rivet.released}</span></div>
+    <div class="fact-row"><span class="mono-label">Needs</span><span class="mono" style="color:var(--porcelain)">{rivet.needs}</span></div>
+    <div class="fact-row"><span class="mono-label">License</span><span class="mono" style="color:var(--porcelain)">{rivet.license}</span></div>
+    <div class="fact-row">
+      <span class="mono-label">Signed by</span>
+      <span style="display:flex;align-items:center;gap:12px">
+        <span class="mono" style="color:var(--porcelain)">{rivet.signingKeyShort}</span>
+        <CopyButton text={rivet.signingKey} label="Copy" />
+      </span>
+    </div>
+    <div class="fact-row"><span class="mono-label">Changes</span><a class="text-link mono" href={links.rivetRelease}>Release notes ↗</a></div>
+    <div class="fact-row"><span class="mono-label">Older versions</span><a class="text-link mono" href={links.rivetReleases}>GitHub Releases ↗</a></div>
+  </section>
+
+  <section style="display:flex;gap:32px">
+    <a class="text-link" href={links.rivetSource} style="display:inline-flex;gap:8px;align-items:center"><Icon name="github" /> Source</a>
+    <a class="text-link" href={links.productHunt} style="display:inline-flex;gap:8px;align-items:center"><Icon name="producthunt" /> Product Hunt</a>
+  </section>
+</SiteLayout>

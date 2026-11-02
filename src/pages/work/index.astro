@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import Icon from '../../components/Icon.astro';
+import Terminal from '../../components/Terminal.astro';
+import chat from '../../assets/shots/rivet-chat.jpg';
+import { links } from '../../data/links';
+
+// Real output, captured 2026-11-02 from governer 1.0.2 (pip install
+// governer in a throwaway venv). One line held back: it carried an
+// emoji, and this site uses none. The rest is word for word.
+const governerLines = [
+  { text: '$ governer box --limit 0.05 --model claude-opus-5-5 --max-turns 5', cmd: true },
+  { text: 'wallet $0.05 · claude-opus-5-5 · 200,000 tok/turn · CACHE MISSING' },
+  { text: '  turn    1   BLOCKED  (would have cost $0.8100)', blocked: true },
+  { text: 'BREAKER TRIPPED at $0.00 of $0.05 — agent stopped' },
+  { text: '   paid              $      0.00  (1 turns)' },
+];
+---
+
+<SiteLayout title="Work — Vastraa Labs" description="What Vastraa Labs has shipped: Rivet, Freeline, Governer.">
+  <section style="padding-top:48px">
+    <span class="mono-label">03 SHIPPED</span>
+    <h1 style="margin-top:16px">Work.</h1>
+  </section>
+
+  <div class="room" id="rivet" data-reveal>
+    <div class="room-text">
+      <h2>Rivet</h2>
+      <span class="mono-label">ANDROID · v1.1.1 · OPEN SOURCE</span>
+      <p>A coding agent on your phone.</p>
+      <a class="btn" href="/work/rivet/">Get Rivet <Icon name="arrow-right" size={16} /></a>
+    </div>
+    <div class="room-visual frame">
+      <Image src={chat} alt="Rivet chat screen" width={1200} height={1920} widths={[400, 800, 1200]} sizes="(max-width: 767px) 100vw, 560px" formats={['avif', 'webp']} />
+    </div>
+  </div>
+
+  <div class="room" id="freeline" data-reveal>
+    <div class="room-text">
+      <h2>Freeline</h2>
+      <span class="mono-label">BUILT FOR THE META GLOBAL AI DEVELOPER HACKATHON</span>
+      <p>Which AI models are free right now. Checked every 3 hours.</p>
+      <a class="btn btn-ghost" href={links.freeline}>Open Freeline <Icon name="arrow-up-right" size={16} /></a>
+    </div>
+    <div class="room-visual">
+      <a class="link-panel" href={links.freeline}>
+        <span class="mono-label">FREELINE.VASTRAALABS.ONLINE</span>
+        <span style="font-size:1.25rem;font-weight:500;color:var(--porcelain)">Which AI models are free right now.</span>
+        <span class="text-link" style="display:inline-flex;gap:8px;align-items:center">Open <Icon name="arrow-up-right" size={16} /></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="room" id="governer" data-reveal>
+    <div class="room-text">
+      <h2>Governer</h2>
+      <span class="mono-label">PYTHON · PyPI</span>
+      <p>Prices agent calls the way providers bill. Refuses the ones over budget.</p>
+      <div class="copy-box">
+        <span>$ pip install governer</span>
+        <CopyButton text="pip install governer" />
+      </div>
+      <p style="margin-top:24px;display:flex;gap:24px">
+        <a href={links.governerSource} aria-label="Governer on GitHub" style="display:inline-flex;gap:8px;align-items:center"><Icon name="github" /> GitHub</a>
+        <a href={links.governerPypi} aria-label="Governer on PyPI" style="display:inline-flex;gap:8px;align-items:center"><Icon name="pypi" /> PyPI</a>
+      </p>
+    </div>
+    <div class="room-visual">
+      <Terminal lines={governerLines} />
+    </div>
+  </div>
+</SiteLayout>

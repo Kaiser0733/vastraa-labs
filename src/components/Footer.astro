@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import Window from './Window.astro';
+import head from '../assets/mascot/head.png';
+import { links } from '../data/links';
+---
+
+<footer class="site-footer">
+  <div class="footer-row">
+    <div>
+      <a class="brand" href="/">
+        <Window image={head} alt="" width={24} height={24} widths={[24, 48]} />
+        <span>Vastraa Labs</span>
+      </a>
+      <p class="mono muted" style="margin-top:12px">Bihar, India</p>
+    </div>
+    <div>
+      <div class="footer-marks">
+        <a href={links.github} aria-label="GitHub"><Icon name="github" /></a>
+        <a href={links.x} aria-label="X"><Icon name="x" /></a>
+        <a href={links.productHunt} aria-label="Product Hunt"><Icon name="producthunt" /></a>
+        <a href={`mailto:${links.email}`} aria-label="Email"><Icon name="mail" /></a>
+      </div>
+      <div class="footer-links mono">
+        <a class="text-link" href="/downloads/">Downloads</a>
+        <a class="text-link" href="/contact/#support">Support</a>
+      </div>
+    </div>
+  </div>
+  <p class="mono muted footer-base">© 2026 Vastraa Labs</p>
+</footer>

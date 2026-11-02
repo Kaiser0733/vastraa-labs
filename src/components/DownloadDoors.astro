@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+import CopyButton from './CopyButton.astro';
+import { links } from '../data/links';
+import { rivet } from '../data/rivet';
+import { currentApk } from '../lib/apk';
+
+const apk = currentApk();
+const meta = `${rivet.version} · APK · ${apk.sizeMb} MB`;
+---
+
+<div class="doors">
+  <div class="door-wrap">
+    <a class="door" href={links.rivetGithubApk} download>
+      <Icon name="github" size={24} />
+      <span>
+        <span class="door-name">GitHub</span><br />
+        <span class="door-meta">{meta}</span>
+      </span>
+      <span class="door-arrow"><Icon name="arrow-down" size={20} /></span>
+    </a>
+  </div>
+  <div class="door-wrap">
+    <a class="door" href={rivet.mirrorUrl} download>
+      <Icon name="download" size={24} />
+      <span>
+        <span class="door-name">Vastraa mirror</span><br />
+        <span class="door-meta">{meta}</span>
+      </span>
+      <span class="door-arrow"><Icon name="arrow-down" size={20} /></span>
+    </a>
+    <p class="door-note mono muted">If GitHub won't load.</p>
+  </div>
+</div>
+<p class="mono" style="margin-top:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+  Same file. <span>SHA-256 {apk.shaShort}</span>
+  <CopyButton text={apk.sha256} label="Copy" />
+</p>
+<p class="mono muted" style="margin-top:12px">Android will ask to allow installs from your browser. Allow it once.</p>

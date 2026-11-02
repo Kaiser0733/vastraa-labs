@@ -1,0 +1,9 @@
+---
+interface Props { href?: string; class?: string }
+const { href, class: cls = '' } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class:list={['ruled-row', cls]} href={href}>
+  <slot />
+</Tag>

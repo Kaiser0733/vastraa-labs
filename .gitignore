@@ -13,3 +13,4 @@ shots
 # the real build runs in $HOME because /storage is FUSE and native .node
 # binaries cannot load there; this mirror must never be committed
 vlab-build/
+.astro/

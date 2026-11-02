@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { links } from '../data/links';
+---
+
+<div class="mobile-sheet" id="mobile-sheet" hidden>
+  <div class="mobile-sheet-head">
+    <span style="color:var(--porcelain);font-weight:600;font-size:15px">Vastraa Labs</span>
+    <button type="button" class="menu-button" data-menu-close style="display:block">Close</button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="/work/">Work</a>
+    <a href="/studio/">Studio</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <a class="sheet-mark" href={links.github} aria-label="GitHub"><Icon name="github" size={24} /></a>
+</div>
