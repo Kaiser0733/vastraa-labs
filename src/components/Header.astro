@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import Window from './Window.astro';
 import MobileMenu from './MobileMenu.astro';
-import head from '../assets/mascot/head.png';
+import head from '../assets/mascot/face-cut.png';
 import { links } from '../data/links';
 
 const path = Astro.url.pathname;
@@ -13,7 +13,7 @@ const items = [
 ];
 ---
 
-<header class="site-header" transition:persist>
+<header class="site-header">
   <a class="brand" href="/" aria-label="Vastraa Labs — home">
     <Window image={head} alt="" width={36} height={36} widths={[36, 72]} />
     <span>Vastraa Labs</span>

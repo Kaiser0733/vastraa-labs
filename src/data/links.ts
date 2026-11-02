@@ -1,6 +1,8 @@
 export const links = {
   site: 'https://vastraalabs.online',
-  email: 'contact@vastraalabs.online',
+  // Split on purpose: the whole address never appears in served HTML.
+  emailUser: 'contact',
+  emailDomain: 'vastraalabs.online',
   github: 'https://github.com/Kaiser0733',
   rivetSource: 'https://github.com/Kaiser0733/rivet',
   rivetRelease: 'https://github.com/Kaiser0733/rivet/releases/tag/v1.1.1',
@@ -13,6 +15,8 @@ export const links = {
   governerSource: 'https://github.com/Kaiser0733/governer',
   governerPypi: 'https://pypi.org/project/governer/',
   x: 'https://x.com/Not_Kaiser',
+  kaiserInstagram: 'https://www.instagram.com/vary.kaiser_',
+  rehanInstagram: 'https://www.instagram.com/1.amrehan',
 } as const;
 
 // Buy Me a Coffee is not here on purpose: contact.astro holds it alone.

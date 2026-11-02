@@ -14,3 +14,4 @@ shots
 # binaries cannot load there; this mirror must never be committed
 vlab-build/
 .astro/
+.venv/

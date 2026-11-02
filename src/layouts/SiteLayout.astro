@@ -83,6 +83,16 @@ const { title, description, ogImage } = Astro.props;
         });
       }
 
+      // The address is assembled here so the served HTML holds no plain
+      // email or mailto for Cloudflare Scrape Shield to rewrite.
+      function emailBits() {
+        document.querySelectorAll<HTMLElement>('[data-email-user]').forEach((el) => {
+          const addr = `${el.dataset.emailUser}@${el.dataset.emailDomain}`;
+          if (el.hasAttribute('data-email-text')) el.textContent = addr;
+          if (el.tagName === 'A') el.setAttribute('href', ':otliam'.split('').reverse().join('') + addr);
+        });
+      }
+
       function homeBits() {
         const back = document.getElementById('back-again');
         if (back) {
@@ -100,8 +110,8 @@ const { title, description, ogImage } = Astro.props;
         }
       }
 
-      function init() { navIndicator(); reveals(); parallax(); homeBits(); }
-      document.addEventListener('astro:page-load', init);
+      function init() { navIndicator(); reveals(); parallax(); homeBits(); emailBits(); }
+      init();
       addEventListener('resize', navIndicator);
 
       document.addEventListener('click', async (e) => {
@@ -109,9 +119,9 @@ const { title, description, ogImage } = Astro.props;
         if (t.closest('[data-menu-open]')) document.getElementById('mobile-sheet')?.removeAttribute('hidden');
         if (t.closest('[data-menu-close]') || t.closest('.mobile-sheet nav a'))
           document.getElementById('mobile-sheet')?.setAttribute('hidden', '');
-        const btn = t.closest<HTMLElement>('[data-copy]');
+        const btn = t.closest<HTMLElement>('[data-copy], [data-email-copy]');
         if (btn) {
-          const text = btn.dataset.copy!;
+          const text = btn.dataset.copy ?? `${btn.dataset.emailUser}@${btn.dataset.emailDomain}`;
           try { await navigator.clipboard.writeText(text); }
           catch {
             const ta = document.createElement('textarea');

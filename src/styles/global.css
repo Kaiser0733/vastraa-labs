@@ -51,7 +51,7 @@ section:first-child { margin-top: 0; }
 .site-header {
   position: sticky; top: 0; z-index: 40; height: 64px;
   display: flex; align-items: center; justify-content: space-between;
-  background: color-mix(in srgb, var(--carbon) 92%, transparent);
+  background: var(--carbon);
   border-bottom: 1px solid var(--rule);
 }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--porcelain); font-weight: 600; font-size: 15px; }
@@ -89,7 +89,7 @@ section:first-child { margin-top: 0; }
 .footer-base { margin-top: 48px; }
 
 /* Windows and images */
-.window { border-radius: 0; overflow: hidden; background: var(--porcelain); flex: none; }
+.window { border-radius: 0; overflow: visible; background: transparent; flex: none; }
 .window picture { display: block; width: 100%; height: 100%; }
 .window img { width: 100%; height: 100%; object-fit: cover; }
 .blended picture { display: block; width: 100%; height: 100%; }
@@ -156,8 +156,8 @@ a.ruled-row:hover, .ruled-row:hover { background: var(--carbon-2); box-shadow: i
 .hero-text .line { color: var(--ash); margin-top: 20px; }
 .hero-actions { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
 .hero-window { grid-column: 8 / 13; margin: 0; display: flex; flex-direction: column; }
-.hero-window .window { height: min(580px, calc(100svh - 224px)); aspect-ratio: 4 / 5; align-self: flex-end; }
-.hero-window figcaption { display: flex; justify-content: space-between; margin-top: 12px; width: 100%; }
+.hero-window .window { width: min(520px, 100%); height: auto; align-self: flex-end; }
+.hero-window figcaption { display: flex; justify-content: flex-end; margin-top: 12px; width: 100%; }
 #back-again { opacity: 0; transition: opacity 400ms var(--ease-settle); }
 #back-again.show { opacity: 1; }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -168,8 +168,7 @@ a.ruled-row:hover, .ruled-row:hover { background: var(--carbon-2); box-shadow: i
 @media (max-width: 767px) {
   .hero { grid-template-columns: 1fr; padding-top: 24px; }
   .hero-window { grid-column: 1; order: -1; }
-  .hero-window .window { width: 100%; height: auto; aspect-ratio: 1 !important; align-self: stretch; }
-  .hero-window .window img { object-position: 50% 0; }
+  .hero-window .window { width: 100%; height: auto; align-self: stretch; }
   .hero-text { grid-column: 1; margin-top: 32px; }
 }
 
@@ -206,11 +205,11 @@ html.js [data-reveal].in { opacity: 1; transform: translateY(0); }
   .room-visual { margin-top: 32px; }
 }
 .link-panel {
-  border: 1px solid var(--rule-strong); padding: 48px 32px; display: flex;
-  flex-direction: column; gap: 16px; align-items: flex-start; justify-content: center; min-height: 240px;
+  border: 1px solid var(--rule-strong); padding: 32px; display: flex;
+  flex-direction: column; gap: 16px; align-items: flex-start; justify-content: center;
 }
 .terminal { background: var(--carbon-1); padding: 24px; font-family: var(--font-facts); font-size: 0.84375rem; line-height: 1.7; color: var(--ash); overflow-x: auto; border-radius: 2px; }
-.terminal div { white-space: pre-wrap; }
+.terminal div { white-space: pre; }
 .terminal .t-cmd { color: var(--porcelain); }
 .blocked-tag { background: var(--crimson); color: var(--porcelain); padding: 1px 6px; border-radius: 2px; font-size: 0.75rem; }
 
@@ -244,21 +243,16 @@ html.js [data-reveal].in { opacity: 1; transform: translateY(0); }
 
 /* Contact */
 .support {
-  background: var(--porcelain); color: var(--ink-on-light); border-radius: 0;
-  min-height: 480px; position: relative; overflow: hidden; display: flex; align-items: center;
+  background: var(--carbon); color: var(--ash); border-top: 1px solid var(--rule);
+  min-height: 480px; position: relative; display: flex; align-items: center;
 }
-.support-text { padding: 48px; max-width: 560px; position: relative; z-index: 1; }
-.support-text h2 { color: var(--ink-on-light); }
-.support-text .line { color: var(--ash-on-light); margin: 16px 0 32px; }
+.support-text { padding: 48px 48px 48px 0; max-width: 52%; position: relative; z-index: 1; }
+.support-text .line { color: var(--ash); margin: 16px 0 32px; }
 .blended { position: absolute; right: 0; bottom: 0; height: 100%; aspect-ratio: 1; }
-.blended img {
-  width: 100%; height: 100%; object-fit: cover;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 5%);
-  mask-image: linear-gradient(to bottom, transparent 0, black 5%);
-}
+.blended img { width: 100%; height: 100%; object-fit: contain; object-position: bottom right; }
 @media (max-width: 767px) {
   .support { flex-direction: column; align-items: stretch; min-height: 0; }
-  .support-text { padding: 32px 24px; }
+  .support-text { padding: 32px 0; max-width: 100%; }
   .blended { position: relative; width: 100%; height: auto; }
 }
 

@@ -24,9 +24,9 @@ const rows = [
     <div class="ruled" style="margin-top:48px">
       <RuledRow>
         <Icon name="mail" />
-        <span class="row-main mono" style="color:var(--porcelain);font-size:1rem">{links.email}</span>
-        <CopyButton text={links.email} label="Copy" />
-        <a class="text-link" href={`mailto:${links.email}`} style="display:inline-flex;gap:8px;align-items:center">Open <Icon name="arrow-up-right" size={16} /></a>
+        <span class="row-main mono" style="color:var(--porcelain);font-size:1rem" data-email-text data-email-user={links.emailUser} data-email-domain={links.emailDomain}>contact (at) vastraalabs.online</span>
+        <CopyButton emailParts={{ user: links.emailUser, domain: links.emailDomain }} label="Copy" />
+        <a class="text-link" data-email-user={links.emailUser} data-email-domain={links.emailDomain} style="display:inline-flex;gap:8px;align-items:center;cursor:pointer">Open <Icon name="arrow-up-right" size={16} /></a>
       </RuledRow>
       {rows.map((r) => (
         <RuledRow href={r.href}>
@@ -43,8 +43,8 @@ const rows = [
 
   <section id="support" class="support" style="margin-top:0">
     <div class="support-text">
-      <h2>Keep the lights on.</h2>
-      <p class="line">Tips buy model credits for the next release.</p>
+      <h2>Support Vastraa Labs.</h2>
+      <p class="line">Support goes toward developing and maintaining our products.</p>
       <a class="btn" href={buyMeACoffee}><Icon name="buymeacoffee" /> Buy Me a Coffee</a>
     </div>
     <BlendedMascot />

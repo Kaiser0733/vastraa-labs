@@ -51,9 +51,10 @@ def font(path: str, size: int, weight: int | None = None) -> ImageFont.FreeTypeF
 
 
 def card(og: Image.Image, title: str, sub: str, domain: str, out: Path) -> None:
-    img = Image.new("RGB", (1200, 630), CARBON)
+    img = Image.new("RGBA", (1200, 630), CARBON + (255,))
     right = og.resize((600, 630), Image.LANCZOS)
-    img.paste(right, (600, 0))
+    img.alpha_composite(right, (600, 0))
+    img = img.convert("RGB")
     d = ImageDraw.Draw(img)
     d.text((48, 236), title, font=font("SchibstedGrotesk.ttf", 64, 600), fill=PORCELAIN)
     d.text((48, 330), sub, font=font("IBMPlexMono-Regular.ttf", 22), fill=MUTE)
@@ -65,16 +66,11 @@ def main() -> None:
     MASCOT.mkdir(parents=True, exist_ok=True)
     (PUBLIC / "og").mkdir(parents=True, exist_ok=True)
 
+    # Favicons keep the square art (browser chrome, not a page surface).
     master = tint(Image.open(SRC).convert("RGB"))
     assert master.getpixel((0, 0)) == PORCELAIN, master.getpixel((0, 0))
-    master.save(MASCOT / "master.png")
 
-    crops = {}
-    for name, box in CROPS.items():
-        crops[name] = master.crop(box)
-        crops[name].save(MASCOT / f"{name}.png")
-        print(name, crops[name].size)
-
+    crops = {name: master.crop(box) for name, box in CROPS.items()}
     head, face = crops["head"], crops["face"]
     head.save(PUBLIC / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
     face.resize((180, 180), Image.LANCZOS).save(PUBLIC / "apple-touch-icon.png")
@@ -92,9 +88,11 @@ def main() -> None:
         "display": "standalone",
     }, indent=2) + "\n")
 
-    card(crops["og"], "Vastraa Labs", "AI studio · Bihar, India",
+    # Social cards carry the transparent cutout on carbon. No location text.
+    og_cut = Image.open(MASCOT / "og-cut.png").convert("RGBA")
+    card(og_cut, "Vastraa Labs", "We build and ship our own products.",
          "vastraalabs.online", PUBLIC / "og/og-default.png")
-    card(crops["og"], "Rivet", "v1.1.1 · Android",
+    card(og_cut, "Rivet", "v1.1.1 · Android",
          "vastraalabs.online/rivet", PUBLIC / "og/og-rivet.png")
     print("favicons, webmanifest, og cards done")
 

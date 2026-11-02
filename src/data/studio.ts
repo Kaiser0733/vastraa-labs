@@ -3,17 +3,19 @@ import { links } from './links';
 // A person shows a name only once one is set here. No invented names.
 export const people = [
   {
-    name: 'Amardeep Kumar' as string | null,
-    handle: 'kaiser',
+    name: 'kaiser' as string | null,
+    handle: null,
     role: 'Founder',
     github: links.github,
     x: links.x,
+    instagram: links.kaiserInstagram,
   },
   {
-    name: null as string | null,
+    name: 'Rehan' as string | null,
     handle: null,
     role: 'Co-founder',
     github: null,
     x: null,
+    instagram: links.rehanInstagram,
   },
 ] as const;
