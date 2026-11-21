@@ -137,6 +137,21 @@
       "tree_fingerprint": "8f45f1e936d5b8567811359144bb4bd178c5967a886726a5f65c9ea293368451",
       "tree_kind": "git",
       "status": "pass"
+    },
+    {
+      "id": "rcpt-0010",
+      "claim": "Deployed site serves the new Rivet page: live /work/rivet/ byte-identical to committed file (sha256), about+faq+See more/less+8 chevrons present, stylesheet and sibling pages 200",
+      "command": "bash /tmp/check_live.sh",
+      "cwd": "/home/hatch/workspace/vastraa-ghpages",
+      "exit_code": 0,
+      "duration_s": 5.817,
+      "started_at": "2026-11-21T14:49:53Z",
+      "stdout_tail": "ok   /_astro/SiteLayout.r3S1DPZP.css -> 200\nok   / -> 200\nok   /work/ -> 200\nok   /feedback/ -> 200\nok   /downloads/ -> 200\nok   live /work/rivet/ byte-identical to committed file — 4c3822c4dae9a109211ce34892d5fe6806bd912e5d1566bf685772a82d96092a\nLIVE CHECKS PASS\n",
+      "stderr_tail": "",
+      "output_sha256": "0d045fa9bb4437d45cb62087feea616123ea8dd2b50a7d46c561fedf104674bb",
+      "tree_fingerprint": "8f45f1e936d5b8567811359144bb4bd178c5967a886726a5f65c9ea293368451",
+      "tree_kind": "git",
+      "status": "pass"
     }
   ]
 }
