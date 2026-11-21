@@ -16,7 +16,7 @@
       "output_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
       "tree_kind": "git",
-      "status": "pass"
+      "status": "stale"
     },
     {
       "id": "rcpt-0002",
@@ -31,7 +31,7 @@
       "output_sha256": "0cce29ec54382e04e09fdb8371c1607c176d82f82a21507c96c7e6d7c056bc4f",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
       "tree_kind": "git",
-      "status": "pass"
+      "status": "stale"
     },
     {
       "id": "rcpt-0003",
@@ -46,7 +46,7 @@
       "output_sha256": "fc1f1caeca6db73e7d94105ada229a2f45bfb62b58f77ad8d8c058eb8a260fd5",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
       "tree_kind": "git",
-      "status": "pass"
+      "status": "stale"
     },
     {
       "id": "rcpt-0004",
@@ -61,7 +61,7 @@
       "output_sha256": "daca4b2b99ed0d75b3d6b263a6024d758e6a0b0aeb4da412792b6bcebd75d6f7",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
       "tree_kind": "git",
-      "status": "pass"
+      "status": "stale"
     },
     {
       "id": "rcpt-0005",
@@ -76,7 +76,7 @@
       "output_sha256": "6ab8c775e9539410222d90e87031db15192194d7b4438db6944f028734815b88",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
       "tree_kind": "git",
-      "status": "pass"
+      "status": "stale"
     },
     {
       "id": "rcpt-0006",
@@ -90,6 +90,51 @@
       "stderr_tail": "",
       "output_sha256": "731ab5b31c5f2ce034c3c69628ab8858a9acf2788d6deda5fe847475b3e1951b",
       "tree_fingerprint": "8ece3161565fb2abc9fd2cee6ffac1d7c090c2e71539378bd0505d545fe9998c",
+      "tree_kind": "git",
+      "status": "stale"
+    },
+    {
+      "id": "rcpt-0007",
+      "claim": "Rivet page: HTML tag-balanced (html.parser), About/FAQ copy verbatim vs brief (24 text blocks + 8 bold lead-ins), section order shots<about<download<faq<feedback, 8 closed native details folds, protected regions byte-identical to HEAD, all local assets exist, fold contrast 6.93:1 / 16.47:1",
+      "command": "python3 /tmp/check_rivet.py",
+      "cwd": "/home/hatch/workspace/vastraa-ghpages",
+      "exit_code": 0,
+      "duration_s": 0.076,
+      "started_at": "2026-11-21T14:43:52Z",
+      "stdout_tail": "  ok   html.parser tag balance (edited) — errors=[] unclosed=[]\n  ok   html.parser tag balance (HEAD baseline) — errors=[] unclosed=[]\n  ok   about lede present exactly once, outside any details\n  ok   ABOUT SHORT verbatim\n  ok   lead line verbatim\n  ok   8 about points — found 8\n  ok   point 1 verbatim (incl. bold lead-in)\n  ok   point 2 verbatim (incl. bold lead-in)\n  ok   point 3 verbatim (incl. bold lead-in)\n  ok   point 4 verbatim (incl. bold lead-in)\n  ok   point 5 verbatim (incl. bold lead-in)\n  ok   point 6 verbatim (incl. bold lead-in)\n  ok   point 7 verbatim (incl. bold lead-in)\n  ok   point 8 verbatim (incl. bold lead-in)\n  ok   7 FAQ questions + 7 answers — q=7 a=7\n  ok   FAQ 1 question verbatim\n  ok   FAQ 1 answer verbatim\n  ok   FAQ 2 question verbatim\n  ok   FAQ 2 answer verbatim\n  ok   FAQ 3 question verbatim\n  ok   FAQ 3 answer verbatim\n  ok   FAQ 4 question verbatim\n  ok   FAQ 4 answer verbatim\n  ok   FAQ 5 question verbatim\n  ok   FAQ 5 answer verbatim\n  ok   FAQ 6 question verbatim\n  ok   FAQ 6 answer verbatim\n  ok   FAQ 7 question verbatim\n  ok   FAQ 7 answer verbatim\n  ok   section order: about before download, faq between download and feedback — ['rivet-head', 'about', 'download', 'faq', 'feedback', 'facts', None]\n  ok   about after screenshots area\n  ok   8 native details folds, all closed by default, 8 summaries, 8 chevrons — details=8 summaries=8 chevrons=8\n  ok   headings match existing pattern\n  ok   See more / See less labels present\n  ok   no script added (page script unchanged)\n  ok   three insertion spans located\n  ok   removing the 3 insertions reproduces HEAD byte-for-byte (nav, screenshots, doors, feedback, facts, footer untouched) — len restored=20697 head=20697\n  ok   every root-relative asset referenced by the page exists — []\n  ok   answer text ash on carbon-2 >= 4.5:1 — 6.93:1\n  ok   question/lead porcelain on carbon-2 >= 7:1 — 16.47:1\n\nALL CHECKS PASS\n",
+      "stderr_tail": "",
+      "output_sha256": "0b05d70f021d793a724724f428106f53e745ed79da91a2cfcfbcfe536a2ed9b4",
+      "tree_fingerprint": "c0717cddced23889bccf8dc1f50ced1f80e701a627b255da16d2fcd45270414e",
+      "tree_kind": "git",
+      "status": "stale"
+    },
+    {
+      "id": "rcpt-0008",
+      "claim": "Fold CSS is page-local: 17 balanced rules, all 7 var() tokens resolve, shared stylesheet byte-identical to HEAD (no cache-bust required), only work/rivet/index.html changed",
+      "command": "python3 /tmp/check_css.py",
+      "cwd": "/home/hatch/workspace/vastraa-ghpages",
+      "exit_code": 0,
+      "duration_s": 0.052,
+      "started_at": "2026-11-21T14:43:52Z",
+      "stdout_tail": "ok   style braces balanced (17 rules)\nok   all 7 var() tokens resolve against shared :root\nok   shared stylesheet byte-identical to HEAD (no cache-bust needed)\nok   git diff scope: ['.receipts/ledger.json', 'work/rivet/index.html']\nCSS CHECKS PASS\n",
+      "stderr_tail": "",
+      "output_sha256": "a5fde7d8c8c2e2db9351137aefe543dd0e97e616e0e43e22c9046bb0f1f8c776",
+      "tree_fingerprint": "8f45f1e936d5b8567811359144bb4bd178c5967a886726a5f65c9ea293368451",
+      "tree_kind": "git",
+      "status": "pass"
+    },
+    {
+      "id": "rcpt-0009",
+      "claim": "Rivet page: HTML tag-balanced (html.parser), About/FAQ copy verbatim vs brief (24 text blocks + 8 bold lead-ins), section order shots<about<download<faq<feedback, 8 closed native details folds, protected regions byte-identical to HEAD, all local assets exist, fold contrast 6.93:1 / 16.47:1",
+      "command": "python3 /tmp/check_rivet.py",
+      "cwd": "/home/hatch/workspace/vastraa-ghpages",
+      "exit_code": 0,
+      "duration_s": 0.081,
+      "started_at": "2026-11-21T14:47:38Z",
+      "stdout_tail": "  ok   html.parser tag balance (edited) — errors=[] unclosed=[]\n  ok   html.parser tag balance (HEAD baseline) — errors=[] unclosed=[]\n  ok   about lede present exactly once, outside any details\n  ok   ABOUT SHORT verbatim\n  ok   lead line verbatim\n  ok   8 about points — found 8\n  ok   point 1 verbatim (incl. bold lead-in)\n  ok   point 2 verbatim (incl. bold lead-in)\n  ok   point 3 verbatim (incl. bold lead-in)\n  ok   point 4 verbatim (incl. bold lead-in)\n  ok   point 5 verbatim (incl. bold lead-in)\n  ok   point 6 verbatim (incl. bold lead-in)\n  ok   point 7 verbatim (incl. bold lead-in)\n  ok   point 8 verbatim (incl. bold lead-in)\n  ok   7 FAQ questions + 7 answers — q=7 a=7\n  ok   FAQ 1 question verbatim\n  ok   FAQ 1 answer verbatim\n  ok   FAQ 2 question verbatim\n  ok   FAQ 2 answer verbatim\n  ok   FAQ 3 question verbatim\n  ok   FAQ 3 answer verbatim\n  ok   FAQ 4 question verbatim\n  ok   FAQ 4 answer verbatim\n  ok   FAQ 5 question verbatim\n  ok   FAQ 5 answer verbatim\n  ok   FAQ 6 question verbatim\n  ok   FAQ 6 answer verbatim\n  ok   FAQ 7 question verbatim\n  ok   FAQ 7 answer verbatim\n  ok   section order: about before download, faq between download and feedback — ['rivet-head', 'about', 'download', 'faq', 'feedback', 'facts', None]\n  ok   about after screenshots area\n  ok   8 native details folds, all closed by default, 8 summaries, 8 chevrons — details=8 summaries=8 chevrons=8\n  ok   headings match existing pattern\n  ok   See more / See less labels present\n  ok   no script added (page script unchanged)\n  ok   three insertion spans located\n  ok   removing the 3 insertions reproduces HEAD byte-for-byte (nav, screenshots, doors, feedback, facts, footer untouched) — len restored=20697 head=20697\n  ok   every root-relative asset referenced by the page exists — []\n  ok   answer text ash on carbon-2 >= 4.5:1 — 6.93:1\n  ok   question/lead porcelain on carbon-2 >= 7:1 — 16.47:1\n\nALL CHECKS PASS\n",
+      "stderr_tail": "",
+      "output_sha256": "0b05d70f021d793a724724f428106f53e745ed79da91a2cfcfbcfe536a2ed9b4",
+      "tree_fingerprint": "8f45f1e936d5b8567811359144bb4bd178c5967a886726a5f65c9ea293368451",
       "tree_kind": "git",
       "status": "pass"
     }
