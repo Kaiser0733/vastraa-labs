@@ -183,6 +183,27 @@ html.lights-play .hero-text > *:nth-child(3) { animation-delay: 520ms; }
 @keyframes her-on { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: scale(1); } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Letter (Home) */
+.letter-title { margin-top: 16px; max-width: 28ch; }
+.letter-body { margin-top: 24px; max-width: 60ch; font-family: var(--font-voice); color: var(--ash); }
+.letter-body p { max-width: none; margin: 0 0 1.25em; }
+.letter-body strong { color: var(--porcelain); font-weight: 600; }
+.letter-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  appearance: none; background-color: transparent; border: 0;
+  padding: 0 0 2px; cursor: pointer;
+}
+.letter-toggle .icon { transition: transform 180ms var(--ease-snap); }
+.letter-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.letter-rest { margin-top: 32px; }
+.letter-rest[hidden] { display: none; }
+.letter-body p.letter-sign {
+  margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--rule);
+  font-family: var(--font-facts); font-size: 0.84375rem; line-height: 1.6; color: var(--mute);
+}
+.letter-sign span { display: block; }
+.letter-sign-name { color: var(--porcelain); }
+
 /* Reveal + line draws */
 [data-line] { transform-origin: left; }
 html.js [data-line]:not(.in) { transform: scaleX(0); }
